@@ -7,8 +7,10 @@
   "author": "",
   "license": "ISC",
   "scripts": {
+    "presale:mainnet:deploy": "npx hardhat deploy --network mainnet --tags PRESALEPOOL",
+    "presale:deploy": "npx hardhat deploy --network rinkeby --tags PRESALEPOOL",
     "bsc:deploy": "hardhat deploy --network bsc --reset",
-    "rinkeby:deploy": "hardhat deploy --network rinkeby",
+    "rinkeby:deploy": "hardhat deploy --network rinkeby --reset",
     "rinkeby:verify": "hardhat --network rinkeby etherscan-verify --solc-input",
     "bsc:verify": "hardhat --network bsc etherscan-verify --solc-input",
     "test": "npx hardhat test"

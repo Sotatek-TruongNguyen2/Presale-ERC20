@@ -7,7 +7,6 @@ import "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol";
 import "../extensions/PresaleWhitelist.sol";
 import "../tokens/ERC20/IERC20.sol";
 import "../libraries/TransferHelper.sol";
-import "hardhat/console.sol";
 
 contract PresalePool is PresaleWhitelist, ReentrancyGuardUpgradeable, PausableUpgradeable, OwnableUpgradeable {
     struct OfferedCurrency {
@@ -19,7 +18,7 @@ contract PresalePool is PresaleWhitelist, ReentrancyGuardUpgradeable, PausableUp
     address public fundingWallet;
     address public factory;
 
-    uint public openTime = block.timestamp;
+    uint public openTime;
     uint public closeTime;
     uint public totalSold;
     uint public totalRaised;
@@ -78,6 +77,7 @@ contract PresalePool is PresaleWhitelist, ReentrancyGuardUpgradeable, PausableUp
         address _soldToken,
         address _offerToken,
         address _fundingWallet,
+        uint _openTime,
         uint _duration,
         uint _offeredCurrencyRate,
         uint _offeredCurrencyDecimal
@@ -91,6 +91,7 @@ contract PresalePool is PresaleWhitelist, ReentrancyGuardUpgradeable, PausableUp
         factory = msg.sender;        
         soldToken = IERC20(_soldToken);
         fundingWallet = _fundingWallet;
+        openTime = _openTime;
         closeTime = openTime + _duration;
         offeredCurrencies[_offerToken] = OfferedCurrency(_offeredCurrencyRate, _offeredCurrencyDecimal);
 

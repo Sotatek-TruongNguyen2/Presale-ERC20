@@ -73,6 +73,11 @@ describe("PresalePool Testing", function () {
     describe("PresalePool", async () => {
       describe("PresalePool Ownable", async () => {
         it("Owner of presale pool is who deploy pool throuh PresaleFactory", async () => {
+
+        })
+      });
+      describe("PresalePool Ownable", async () => {
+        it("Owner of presale pool is who deploy pool throuh PresaleFactory", async () => {
             if (factory && mockERC20 && USDT && alice) {
               const aliceAddress = await alice.getAddress();
               await factory.createPresalePool(
@@ -80,6 +85,7 @@ describe("PresalePool Testing", function () {
                 mockERC20.address,
                 USDT.address,
                 aliceAddress,
+                Math.floor(Date.now() / 1000) - 2000,
                 "3000",
                 expandTo18Decimals(2, 12),
                 "2"
@@ -103,6 +109,7 @@ describe("PresalePool Testing", function () {
               mockERC20.address,
               USDT.address,
               aliceAddress,
+              Math.floor(Date.now() / 1000) - 2000,
               "3000",
               expandTo18Decimals(2, 12),
               "2"
@@ -126,6 +133,7 @@ describe("PresalePool Testing", function () {
               mockERC20.address,
               USDT.address,
               aliceAddress,
+              Math.floor(Date.now() / 1000) - 2000,
               "3000",
               expandTo18Decimals(2, 12),
               "2"
@@ -149,6 +157,7 @@ describe("PresalePool Testing", function () {
               mockERC20.address,
               USDT.address,
               aliceAddress,
+              Math.floor(Date.now() / 1000) - 2000,
               "3000",
               expandTo18Decimals(2, 12),
               "2"
@@ -174,6 +183,8 @@ describe("PresalePool Testing", function () {
               mockERC20.address,
               USDT.address,
               aliceAddress,
+              Math.floor(Date.now() / 1000) - 2000,
+
               "3000",
               expandTo18Decimals(2, 12),
               "2"
@@ -202,6 +213,7 @@ describe("PresalePool Testing", function () {
               mockERC20.address,
               USDT.address,
               aliceAddress,
+              Math.floor(Date.now() / 1000) - 2000,
               "2500000000",
               expandTo18Decimals(2, 12),
               "2"
@@ -226,23 +238,26 @@ describe("PresalePool Testing", function () {
             const aliceAddress = await alice.getAddress();
             const daveAddress = await dave.getAddress();
             // 1 Token = 5 USDT
-            await factory.createPresalePool(
+            const tx = await factory.createPresalePool(
               merkleTree.getHexRoot(),
               mockERC20.address,
               USDT.address,
               aliceAddress,
+              Math.floor(Date.now() / 1000) - 2000,
               "2500000000",
               expandTo18Decimals(2, 12),
               "1"
             );
 
+            await tx.wait(1);
+
             const poolAddress = await factory.userCreatedPools(aliceAddress, mockERC20.address, "0");
             const createPool = await new PresalePool__factory(alice).attach(poolAddress); 
             const proof = merkleTree.getHexProof(hashCandidateInfo(daveAddress, expandTo18Decimals(1000)));
 
-            await USDT.transfer(daveAddress, expandTo18Decimals(1000, 6));
-            await USDT.connect(dave).approve(poolAddress, expandTo18Decimals(100000));
-            await mockERC20.transfer(poolAddress, expandTo18Decimals(10000));
+            await(await USDT.transfer(daveAddress, expandTo18Decimals(1000, 6))).wait(1);
+            await(await USDT.connect(dave).approve(poolAddress, expandTo18Decimals(100000))).wait(1);
+            await(await mockERC20.transfer(poolAddress, expandTo18Decimals(10000))).wait(1);
 
             await expect(
               createPool.connect(dave).buyTokenByTokenWithPermission(
@@ -308,6 +323,7 @@ describe("PresalePool Testing", function () {
                 mockERC20.address,
                 USDT.address,
                 aliceAddress,
+                Math.floor(Date.now() / 1000) - 2000,
                 "2500000000",
                 expandTo18DecimalsRaw(1, mockERC20Decimal - USDTDecimal).mul(20),
                 "0"
@@ -380,6 +396,7 @@ describe("PresalePool Testing", function () {
                 mockERC20.address,
                 USDT.address,
                 aliceAddress,
+                Math.floor(Date.now() / 1000) - 2000,
                 "2500000000",
                 expandTo18DecimalsRaw(1, mockERC20Decimal - USDTDecimal).mul(1),
                 "1"
@@ -453,6 +470,7 @@ describe("PresalePool Testing", function () {
                 mockERC20V2.address,
                 USDT.address,
                 aliceAddress,
+                Math.floor(Date.now() / 1000) - 2000,
                 "2500000000",
                 20,
                 "2"
@@ -529,6 +547,7 @@ describe("PresalePool Testing", function () {
                 mockERC20V2.address,
                 USDT.address,
                 aliceAddress,
+                Math.floor(Date.now() / 1000) - 2000,
                 "2500000000",
                 1,
                 "3"
@@ -607,6 +626,7 @@ describe("PresalePool Testing", function () {
                 mockERC20V2.address,
                 USDT.address,
                 aliceAddress,
+                Math.floor(Date.now() / 1000) - 2000,
                 "2500000000",
                 1,
                 "3"
@@ -694,6 +714,7 @@ describe("PresalePool Testing", function () {
               mockERC20.address,
               "0x0000000000000000000000000000000000000000",
               aliceAddress,
+              Math.floor(Date.now() / 1000) - 2000,
               "2500000000",
               "333",
               "0"
@@ -765,6 +786,7 @@ describe("PresalePool Testing", function () {
               mockERC20.address,
               "0x0000000000000000000000000000000000000000",
               aliceAddress,
+              Math.floor(Date.now() / 1000) - 2000,
               "2500000000",
               "25",
               "2"
@@ -836,6 +858,7 @@ describe("PresalePool Testing", function () {
               mockERC20.address,
               "0x0000000000000000000000000000000000000000",
               aliceAddress,
+              Math.floor(Date.now() / 1000) - 2000,
               "2500000000",
               "250",
               "0"
@@ -890,6 +913,7 @@ describe("PresalePool Testing", function () {
               mockERC20.address,
               "0x0000000000000000000000000000000000000000",
               aliceAddress,
+              Math.floor(Date.now() / 1000) - 2000,
               2500000000,
               "250",
               "0"
@@ -948,6 +972,7 @@ describe("PresalePool Testing", function () {
               mockERC20.address,
               "0x0000000000000000000000000000000000000000",
               aliceAddress,
+              Math.floor(Date.now() / 1000) - 2000,
               2500000000 + 2500000000,
               "250",
               "0"
@@ -1006,7 +1031,7 @@ describe("PresalePool Testing", function () {
             const balanceOfAfter = await mockERC20.balanceOf(daveAddress);
             expect(balanceOf.add(expandTo18Decimals(10))).to.be.equals(balanceOfAfter);
           } 
-        })
       });
+        })
     });
 });

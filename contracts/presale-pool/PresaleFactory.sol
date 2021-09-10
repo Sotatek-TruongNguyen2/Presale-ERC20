@@ -48,6 +48,7 @@ contract PresalePoolFactory is PausableUpgradeable, OwnableUpgradeable {
         address _soldToken,
         address _offerToken,
         address _fundingWallet,
+        uint _openTime,
         uint _duration,
         uint _offeredCurrencyRate,
         uint _offeredCurrencyDecimal
@@ -63,6 +64,7 @@ contract PresalePoolFactory is PausableUpgradeable, OwnableUpgradeable {
             _soldToken, 
             _offerToken, 
             _fundingWallet, 
+            _openTime,
             _duration, 
             _offeredCurrencyRate, 
             _offeredCurrencyDecimal

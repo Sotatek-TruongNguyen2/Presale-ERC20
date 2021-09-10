@@ -23,7 +23,7 @@ import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
 interface PresalePoolFactoryInterface extends ethers.utils.Interface {
   functions: {
     "changeImpl(address)": FunctionFragment;
-    "createPresalePool(bytes32,address,address,address,uint256,uint256,uint256)": FunctionFragment;
+    "createPresalePool(bytes32,address,address,address,uint256,uint256,uint256,uint256)": FunctionFragment;
     "getPoolByIndex(uint256)": FunctionFragment;
     "getPoolsLength()": FunctionFragment;
     "getUserPoolsByToken(address)": FunctionFragment;
@@ -46,6 +46,7 @@ interface PresalePoolFactoryInterface extends ethers.utils.Interface {
       string,
       string,
       string,
+      BigNumberish,
       BigNumberish,
       BigNumberish,
       BigNumberish
@@ -170,17 +171,19 @@ export class PresalePoolFactory extends Contract {
       _soldToken: string,
       _offerToken: string,
       _fundingWallet: string,
+      _openTime: BigNumberish,
       _duration: BigNumberish,
       _offeredCurrencyRate: BigNumberish,
       _offeredCurrencyDecimal: BigNumberish,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "createPresalePool(bytes32,address,address,address,uint256,uint256,uint256)"(
+    "createPresalePool(bytes32,address,address,address,uint256,uint256,uint256,uint256)"(
       _root: BytesLike,
       _soldToken: string,
       _offerToken: string,
       _fundingWallet: string,
+      _openTime: BigNumberish,
       _duration: BigNumberish,
       _offeredCurrencyRate: BigNumberish,
       _offeredCurrencyDecimal: BigNumberish,
@@ -294,17 +297,19 @@ export class PresalePoolFactory extends Contract {
     _soldToken: string,
     _offerToken: string,
     _fundingWallet: string,
+    _openTime: BigNumberish,
     _duration: BigNumberish,
     _offeredCurrencyRate: BigNumberish,
     _offeredCurrencyDecimal: BigNumberish,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "createPresalePool(bytes32,address,address,address,uint256,uint256,uint256)"(
+  "createPresalePool(bytes32,address,address,address,uint256,uint256,uint256,uint256)"(
     _root: BytesLike,
     _soldToken: string,
     _offerToken: string,
     _fundingWallet: string,
+    _openTime: BigNumberish,
     _duration: BigNumberish,
     _offeredCurrencyRate: BigNumberish,
     _offeredCurrencyDecimal: BigNumberish,
@@ -415,17 +420,19 @@ export class PresalePoolFactory extends Contract {
       _soldToken: string,
       _offerToken: string,
       _fundingWallet: string,
+      _openTime: BigNumberish,
       _duration: BigNumberish,
       _offeredCurrencyRate: BigNumberish,
       _offeredCurrencyDecimal: BigNumberish,
       overrides?: CallOverrides
     ): Promise<string>;
 
-    "createPresalePool(bytes32,address,address,address,uint256,uint256,uint256)"(
+    "createPresalePool(bytes32,address,address,address,uint256,uint256,uint256,uint256)"(
       _root: BytesLike,
       _soldToken: string,
       _offerToken: string,
       _fundingWallet: string,
+      _openTime: BigNumberish,
       _duration: BigNumberish,
       _offeredCurrencyRate: BigNumberish,
       _offeredCurrencyDecimal: BigNumberish,
@@ -554,17 +561,19 @@ export class PresalePoolFactory extends Contract {
       _soldToken: string,
       _offerToken: string,
       _fundingWallet: string,
+      _openTime: BigNumberish,
       _duration: BigNumberish,
       _offeredCurrencyRate: BigNumberish,
       _offeredCurrencyDecimal: BigNumberish,
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "createPresalePool(bytes32,address,address,address,uint256,uint256,uint256)"(
+    "createPresalePool(bytes32,address,address,address,uint256,uint256,uint256,uint256)"(
       _root: BytesLike,
       _soldToken: string,
       _offerToken: string,
       _fundingWallet: string,
+      _openTime: BigNumberish,
       _duration: BigNumberish,
       _offeredCurrencyRate: BigNumberish,
       _offeredCurrencyDecimal: BigNumberish,
@@ -676,17 +685,19 @@ export class PresalePoolFactory extends Contract {
       _soldToken: string,
       _offerToken: string,
       _fundingWallet: string,
+      _openTime: BigNumberish,
       _duration: BigNumberish,
       _offeredCurrencyRate: BigNumberish,
       _offeredCurrencyDecimal: BigNumberish,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "createPresalePool(bytes32,address,address,address,uint256,uint256,uint256)"(
+    "createPresalePool(bytes32,address,address,address,uint256,uint256,uint256,uint256)"(
       _root: BytesLike,
       _soldToken: string,
       _offerToken: string,
       _fundingWallet: string,
+      _openTime: BigNumberish,
       _duration: BigNumberish,
       _offeredCurrencyRate: BigNumberish,
       _offeredCurrencyDecimal: BigNumberish,

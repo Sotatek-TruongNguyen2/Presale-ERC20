@@ -7,6 +7,7 @@ interface IPresalePool {
         address _soldToken,
         address _offerToken,
         address _fundingWallet,
+        uint _openTime,
         uint _duration,
         uint _offeredCurrencyRate,
         uint _offeredCurrencyDecimal
