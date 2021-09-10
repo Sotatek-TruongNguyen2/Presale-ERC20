@@ -1,4 +1,4 @@
-1. How to deploy Smart contract Presale Pool to mainnet
+1. HOW TO DEPLOY SMART CONTRACT PRESALE POOL TO MAINNET.
  + Step 1: In .env file, please change DEPLOYER_PRIVATE_KEY to your private key
  + Step 2: Go into settings folder, you will see Whitelist.json file which is used for whitelisting in presale. It's a JSON file with key is address of whitelisted user and value is maximum ICO tokens that user can buy.
  + Step 3: Go into deploy folder, You don't need to care about PresaleFactory.ts (It only served our testing purpose). Inside PresalePool.ts, you will see "execute" function which will initialize your contract. So all you need to do is replace all the params in "execute" function with your desired params. 
@@ -8,8 +8,8 @@
 
 2. Calculate rate and decimals field in "execute" function inside deploy/PresalePool.ts file.
  + Formula (I just assume x is rate of Token ~ ETH):
-    **  rate = (1 / x) * (10 ** ICO-decimals - 10 ** 18)
-    **  decimals = length of decimals part if rate 1 / x is odd    
+    +  rate = (1 / x) * (10 ** ICO-decimals - 10 ** 18)
+    +  decimals = length of decimals part if rate 1 / x is odd    
     
     + If rate is odd, for instance: x = 5 => rate = 0.2 
         - rate field need to input in PresalePool.ts is : 2
